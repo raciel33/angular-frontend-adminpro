@@ -10,5 +10,5 @@ export class NopagesfoundComponent  {
 
   year = new Date().getFullYear();
 
- 
+
 }
