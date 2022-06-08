@@ -1,0 +1,21 @@
+<div class="input-group">
+    <span class="input-group-btn">
+   <button [ngClass]="btnClass" (click)="cambiarValor(-5)" type="button">
+     <i class="fa fa-minus"></i>
+   </button>
+</span>
+
+    <!--[ngClass]="{'is-invalid': progreso > 100 || progreso < 0}": is-invalid es una clase
+  predefinida de boostrap que remarca en rojo las condiciones que le pongamos
+
+  (ngModelChange)="onChange($event)" : (ngModelChange): cuando se produzca cambios en el input, es decir cuando
+  escribamos en el se dispara la funcion y el argumento es lo que esta escribiendo
+-->
+    <input type="number" class="form-control" [ngClass]="{'is-invalid': progreso > 100 || progreso < 0}" placeholder="Progreso" min="0" max="100" (ngModelChange)="onChange($event)" [(ngModel)]="progreso">
+
+    <span class="input-group-btn">
+    <button [ngClass]="btnClass" (click)="cambiarValor(+5)" type="button">
+      <i class="fa fa-plus"></i>
+    </button>
+</span>
+</div>

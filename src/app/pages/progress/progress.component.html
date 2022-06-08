@@ -1,1 +1,48 @@
-<p>progress works!</p>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title">Default Progress bars {{progreso1}}</h4>
+
+                <!--[style.width]="getProgreso1" se establece un ancho utilizando una propiedad de .ts-->
+                <div class="progress m-t-20 ">
+                    <div class="progress-bar bg-primary progress-bar-striped active " style=" height:15px;" [style.width]="getProgreso1" role="progressbar">
+
+                    </div>
+                </div>
+
+                <!--[style.width]="getProgreso1" se establece un ancho utilizando una propiedad de .ts-->
+
+                <div class="progress m-t-20 ">
+                    <div class="progress-bar bg-info progress-bar-striped active " style=" height:15px;" [style.width]="getProgreso2" role="progressbar">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+
+                <!--(valorSalida) = "progreso1 = $event" : asignamos directamente en el @Output el valor que queremos
+                 [progreso]="45" : Valor para el @input-->
+                <app-incrementador (valorSalida)="progreso1 = $event" [progreso]="progreso1"></app-incrementador>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+
+                <!--(valorSalida) = "progreso2 = $event" : asignamos directamente en el @Output el valor que queremos
+                  btnClass="btn btn-info" : utilizamos un @Input en un ngClass
+               -->
+                <app-incrementador (valorSalida)="progreso2 = $event" [progreso]="progreso2" [btnClass]="'btn-info'"></app-incrementador>
+            </div>
+        </div>
+    </div>
+</div>
