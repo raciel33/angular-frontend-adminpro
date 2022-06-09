@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { SettingdService } from '../services/settingd.service';
+declare function customInitFunction();
+
 
 @Component({
   selector: 'app-pages',
@@ -8,9 +11,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PagesComponent implements OnInit {
 
-  constructor() { }
+
+  constructor( private SettingdService: SettingdService) { }
 
   ngOnInit(): void {
-  }
+       customInitFunction();
 
+}
 }
