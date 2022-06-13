@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-
+    //la url vacia reedirige al /dashboard
     this.router.navigateByUrl('/');
 
   }
