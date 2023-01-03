@@ -10,10 +10,13 @@ import { AccountSettingComponent } from './account-setting/account-setting.compo
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 
+import { AuthGuard } from '../guards/auth.guard';
+
 
 const routes: Routes = [
   { path: 'dashboard',
   component: PagesComponent,
+  canActivate: [ AuthGuard],//para proteger las rutas
 
   //estas rutas comparten el mismo template
   children :[

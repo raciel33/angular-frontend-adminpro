@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { UsuarioService } from '../../services/usuario.service';
+
+declare const google: any;
+
 
 @Component({
   selector: 'app-header',
@@ -6,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class HeaderComponent implements OnInit {
 
-  constructor() { }
+export class HeaderComponent  {
+    button: any;
+
+  constructor( private usuarioService: UsuarioService) { }
+
+  //funcion para salir
+  logout(){
+      this.button = document.getElementById('signout_button');
+      this.button.onclick = () => {
+      google.accounts.id.disableAutoSelect();
+    }
+     this.usuarioService.logout();
+  }
 
   ngOnInit(): void {
   }
