@@ -1,3 +1,4 @@
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NgModule } from '@angular/core';
 import { Routes , RouterModule} from '@angular/router';
 
@@ -9,7 +10,7 @@ import { NopagesfoundComponent } from './nopagesfound/nopagesfound.component';
 
 const routes: Routes = [
 
-  { path: '', redirectTo: '/dashboard' , pathMatch: 'full' },
+  { path:'', redirectTo:'/dashboard' , pathMatch: 'full' },
 
   //cuando no encuentra la pagina
   { path: '**', component:NopagesfoundComponent }

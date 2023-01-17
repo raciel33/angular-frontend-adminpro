@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
+import { Usuario } from '../../models/usuario.model';
 
 declare const google: any;
 
@@ -12,9 +13,17 @@ declare const google: any;
 })
 
 export class HeaderComponent  {
+
+   public usuario : Usuario; //variable del tipo del modelo
+
     button: any;
 
-  constructor( private usuarioService: UsuarioService) { }
+  constructor( private usuarioService: UsuarioService) {
+
+        this.usuario = usuarioService.usuario;
+
+
+   }
 
   //funcion para salir
   logout(){
@@ -26,6 +35,7 @@ export class HeaderComponent  {
   }
 
   ngOnInit(): void {
+
   }
 
 }

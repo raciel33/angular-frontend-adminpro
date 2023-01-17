@@ -64,8 +64,7 @@ export class LoginComponent implements AfterViewInit {
           this.usuarioService.loginGoogle ( response.credential ).subscribe( resp=>{
             //console.log( {login: resp })
             this.ngZone.run(()=>{
-              this.router.navigateByUrl( '/')
-
+              this.router.navigateByUrl('/');
             })
           })
   }
@@ -75,7 +74,8 @@ export class LoginComponent implements AfterViewInit {
 //login normal con usuario y contraseña
 
   login(){
-  this.usuarioService.login(this.loginForm.value).subscribe(resp=>{
+
+   this.usuarioService.login(this.loginForm.value).subscribe(resp=>{
     /**si al hacer el login el remember es true guarda el
      * email en el localStorage
      * */
@@ -85,7 +85,8 @@ export class LoginComponent implements AfterViewInit {
         //en caso contrario borra la propiedad email almacenada en el localStorage
         localStorage.removeItem('email');
       }
-      this.router.navigateByUrl( '/')
+         // Navegar al Dashboard
+         this.router.navigateByUrl('/');
 
     //si hay algun error
   },(err)=>{

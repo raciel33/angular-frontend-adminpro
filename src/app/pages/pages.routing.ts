@@ -11,24 +11,27 @@ import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 
 import { AuthGuard } from '../guards/auth.guard';
+import { PerfilComponent } from './perfil/perfil.component';
 
 
 const routes: Routes = [
   { path: 'dashboard',
   component: PagesComponent,
-  canActivate: [ AuthGuard],//para proteger las rutas
+  canActivate: [ AuthGuard ],//para proteger las rutas
 
   //estas rutas comparten el mismo template
   children :[
 
     //data: { titulo: 'Dashboard'} : especificamos parametros de ruta
 
-    { path: '',component: DashboardComponent , data: { titulo: 'Dashboard'}},
+    { path: 'dashboard',component: DashboardComponent , data: { titulo: 'Dashboard'}},
     { path: 'progress',component: ProgressComponent ,data: { titulo: 'ProgressBar'}},
     { path: 'grafica1',component: Grafica1Component ,data: { titulo: 'Grafica1'}},
     { path: 'account-settings',component: AccountSettingComponent, data: { titulo: 'Account-settings'}},
     { path: 'promesas',component: PromesasComponent, data: { titulo: 'Promesas'}},
     { path: 'rxjs',component: RxjsComponent ,data: { titulo: 'Rxjs'}},
+    { path: 'perfil',component: PerfilComponent ,data: { titulo: 'Perfil de usuario'}},
+
 
 
 
