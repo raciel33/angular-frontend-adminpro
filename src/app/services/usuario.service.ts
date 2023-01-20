@@ -7,6 +7,7 @@ import { tap, map, catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { Usuario } from '../models/usuario.model';
+import { CargarUsuario } from '../interfaces/cargar-usuarios.interfaces';
 
 //declare const gapi: any;
 declare const google: any;
@@ -39,6 +40,14 @@ get token():string{
 //para extraer el uid del usuario
 get uid():string{
   return this.usuario.uid || '';
+}
+//para extraer los headers(token)
+get headers(){
+  return {
+    headers: {
+      'x-token':this.token //el this.token esta en la funcion get token()
+     }
+   }
 }
 //----------------------------------------------------------
   validarToken(): Observable <boolean>{
@@ -155,4 +164,11 @@ logout(){
 
 }
 
+cargarUsuarios( desde:number = 0){
+
+  const url = `${base_url}/usuarios?desde=${desde}`//ruta definida en el backend(postman)
+
+  //retornamos la ruta y los headers(token)
+  return this.http.get<CargarUsuario>( url ,this.headers)
+}
 }
