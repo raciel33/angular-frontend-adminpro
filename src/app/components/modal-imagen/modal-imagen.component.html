@@ -1,0 +1,32 @@
+<div class="fotoModalImagen animated fadeIn fast" [class.oculto]="modalImagenService.ocultarModal">
+    <!-- style="display: block; hace visible el modal-->
+    <div id="responsive-modal" class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: block;">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Cargar imagen</h4>
+                    <button type="button" (click)="cerrarModal()" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <h3>Seleccione una imagen</h3>
+
+                    <div class="text-center">
+                        <img *ngIf="!imagenTemp" [src]="modalImagenService.img" class="img-avatar">
+                        <img *ngIf="imagenTemp" [src]="imagenTemp" class="img-avatar">
+
+                    </div>
+                    <br>
+
+                    <!--$event.target.files[0] en el cosole.log del event que hay en la funcion cambiarImagen
+  se puede ver que en la primera posicion de files esta la imagen-->
+                    <input type="file" (change)="cambiarImagen($event.target.files[0])">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" (click)="cerrarModal()" class="btn btn-default waves-effect" data-dismiss="modal">Cancelar</button>
+                    <button type="button" (click)="subirImagen()" class="btn btn-danger waves-effect waves-light">Actualizar foto</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -19,11 +19,17 @@ export class Usuario{
 
       //si la imagen existe muestrala y sino muestra la imagen por defecto
     get imagenUrl(){
+
+      //si no existe la imagen
+      if( !this.img){
+        return `${ base_url }/uploads/usuarios/not-image`;
+      }
        //si viene de google el path viene con https
-     if(this.img.includes('https')){
+     else if(this.img.includes('https')){
         return this.img;
       }
-     if (this.img ) {
+      //si viene de validacion por email
+     else if (this.img ) {
           return `${ base_url }/uploads/usuarios/${ this.img }`;
         } else {
           return `${ base_url }/uploads/usuarios/not-image`;

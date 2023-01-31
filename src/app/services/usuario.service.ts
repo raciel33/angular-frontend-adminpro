@@ -168,7 +168,42 @@ cargarUsuarios( desde:number = 0){
 
   const url = `${base_url}/usuarios?desde=${desde}`//ruta definida en el backend(postman)
 
-  //retornamos la ruta y los headers(token)
+  //retornamos la ruta y los headers(token) <CargarUsuario> es una interfaz
   return this.http.get<CargarUsuario>( url ,this.headers)
+  .pipe(
+    //para crear una instancia del modelo de usuario que acceda a sus propiedades y sus metodos
+    map(resp=>{
+       const usuarios = resp.usuarios.map(
+        user=> new Usuario( user.nombre,user.email,'',user.img, user.role,user.google,user.uid))
+
+      return {
+        total: resp.total,
+        usuarios
+      };
+    })
+  )
 }
+
+//para eliminar---------------------------------------------------------------------------
+eliminarUsuario( usuario:Usuario ){
+
+
+  const url = `${base_url}/usuarios/${ usuario.uid }`//ruta definida en el backend(postman)
+
+  //retornamos la ruta y los headers(token)
+  return this.http.delete( url ,this.headers)
+}
+
+
+//para cambiar role---------------------------------------------------------------
+guardarUsuario( usuario:Usuario){
+
+  //actualizacion: se pasa la url completa con el uid y la data que viene como argumento
+  //nota: se especifica el token
+
+  return this.http.put(`${base_url}/usuarios/${usuario.uid }`, usuario ,this.headers)
+
+
+}
+
 }
