@@ -1,0 +1,70 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Medico</h4>
+                <h6 class="card-subtitle">Actualizar informacion</h6>
+
+                <!--[formGroup]="medicoForm" formulario que va acceder a los campos prefefinidos en
+                  este FormGroup de medicoComponent.ts-->
+
+                <form class="form p-t-20" [formGroup]="medicoForm" (submit)="guardarMedico()">
+
+                    <!--*ngIf="medicoSeleccionado" : si no hay medico creado no mostrar imagen-->
+                    <div class="form-group row" *ngIf="medicoSeleccionado">
+                        <label for="exampleInputuname">Foto</label>
+
+                        <div class="input-group ">
+                            <img class="w140 cursor" (click)="abrirModal(medicoSeleccionado)" [src]="medicoSeleccionado.img | imagen:'medicos'">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputuname">Nombre</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+
+                            <input type="text" formControlName="nombre" class="form-control" id="exampleInputuname" placeholder="Nombre del medico">
+
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputEmail1">Hospital</label>
+                        <div class="input-group">
+                            <select class="form-control" formControlName="hospital" name="" id="">
+                              <option value="">Seleccione hospital</option>
+                              <!-- *ngFor="let hospital of hospitales" se cargar los hospitales en el select
+                              [value]="hospital._id" este va ser el valor de este campo
+                            -->
+                              <option *ngFor="let hospital of hospitales"
+                              [value]="hospital._id">{{hospital.nombre}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row m-b-0">
+
+
+                        <button type="submit" [disabled]="medicoForm.invalid" class="btn btn-success waves-effect waves-light m-r-10">
+                          <i class="fa fa-save"></i>
+                          Guardar cambios</button>
+                        <a routerLink="/dashboard/medicos" class="btn btn-inverse waves-effect waves-light">Volver</a>
+
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-6 animated fadeIn fast" *ngIf="hospitalSeleccionado">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Hospital</h4>
+                <h6 class="card-subtitle">{{hospitalSeleccionado.nombre}}</h6>
+                <!--hospitalSeleccionado.img | imagen:'hospitales' al pipe imagen hay que mandarle el tipo en este caso hospitales-->
+                <img class="img-thumbnail" [src]="hospitalSeleccionado.img | imagen:'hospitales'">
+
+            </div>
+        </div>
+    </div>
+</div>

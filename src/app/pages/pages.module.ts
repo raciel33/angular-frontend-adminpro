@@ -1,3 +1,4 @@
+import { PipesModule } from './../pipes/pipes.module';
 //Modulos
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -19,6 +20,9 @@ import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component';
+import { HospitalesComponent } from './mantenimientos/hospitales/hospitales.component';
+import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
+import { MedicoComponent } from './mantenimientos/medicos/medico.component';
 
 
 
@@ -34,6 +38,9 @@ import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component'
     RxjsComponent,
     PerfilComponent,
     UsuariosComponent,
+    HospitalesComponent,
+    MedicosComponent,
+    MedicoComponent,
 
   ],
   imports: [
@@ -42,7 +49,8 @@ import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component'
     AppRoutingModule,
     FormsModule,
     ComponentsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PipesModule
   ],
   exports:[
     ProgressComponent,

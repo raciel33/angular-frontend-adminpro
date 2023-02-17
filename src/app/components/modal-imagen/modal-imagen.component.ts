@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalImagenService } from '../../services/modal-imagen.service';
 import { FileUploadService } from '../../services/file-upload.service';
 import Swal from 'sweetalert2';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-modal-imagen',
@@ -15,7 +16,8 @@ export class ModalImagenComponent implements OnInit {
   public imagenTemp:any;
 
   constructor(public modalImagenService:ModalImagenService,
-               public fileUploadService:FileUploadService) { }
+               public fileUploadService:FileUploadService,
+               public usuarioService:UsuarioService) { }
 
   ngOnInit(): void {
   }
@@ -48,10 +50,18 @@ export class ModalImagenComponent implements OnInit {
 
     //le pasamos a la funcion actualizarFoto del servicio los argumentos que nesecita
     this.fileUploadService.actualizarFoto( this.imagenSubir, tipo , id).
+
+    //si se va actualizar la imagen del usuario que esta activo en ese momento actualizala en todos lados automaticamente
     then( img => {
+       if (id === this.usuarioService.uid) {
+        this.usuarioService.usuario.img = img
+
+       }
+      console.log(id);
+      console.log(this.usuarioService.uid);
+
         //muestra un modal
         Swal.fire('Guardado' , 'Imagen actualizada', 'success')//viene del sweetalert2
-
         //emitimos la imagen en este observable para que se actualice automaticamente
         this.modalImagenService.nuevaImagen.emit( img );
 

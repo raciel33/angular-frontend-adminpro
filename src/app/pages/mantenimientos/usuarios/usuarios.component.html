@@ -21,16 +21,18 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Total de usuarios ({{totalUsuarios}}) </h4>
+                <h4 class="card-title">Total de usuarios
+                    <!--({{totalUsuarios}})>-->
+                </h4>
 
-                <h4 *ngIf="txtTermino.value.length != 0" class="card-title">Busqueda ({{usuarios.length}}) </h4>
-
+                <!--<h4 *ngIf="txtTermino.value.length != 0" class="card-title">Busqueda ({{usuarios.length}}) </h4>
+-->
                 <h6 class="card-subtitle">Usuarios registrados en la aplicacion</h6>
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th class="w-25"></th>
+                                <th class="w-15"></th>
                                 <th>Correo</th>
                                 <th>Nombre</th>
                                 <th>Role</th>

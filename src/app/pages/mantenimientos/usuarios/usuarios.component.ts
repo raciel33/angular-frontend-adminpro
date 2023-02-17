@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs';
   styles: [
   ]
 })
-export class UsuariosComponent implements OnInit {
+export class UsuariosComponent implements OnInit,OnDestroy {
 
   public totalUsuarios:number = 0;
   public usuarios:Usuario [] = [];
@@ -30,17 +30,17 @@ export class UsuariosComponent implements OnInit {
    ) { }
 
 
-/*  ngOnDestroy(): void {
+  ngOnDestroy(): void {
     this.imgSubs.unsubscribe();
 
-}*/
+}
 
 
   ngOnInit(): void {
     this.cargarUsuarios();
 
     //para que se refresque actualice la imagen automaticamente
-    this.modalImagenService.nuevaImagen.
+    this.imgSubs = this.imgSubs =  this.modalImagenService.nuevaImagen.
     pipe(
       delay(100)//retardamos un poco pa que de tiempo la carga
     )
@@ -82,7 +82,7 @@ export class UsuariosComponent implements OnInit {
 
     }
     this.busquedaService.buscar('usuarios', termino ).subscribe(
-    resp=>
+    (resp : Usuario[])=>
         this.usuarios = resp
       )
 

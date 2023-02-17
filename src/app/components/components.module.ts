@@ -13,7 +13,8 @@ import { ModalImagenComponent } from './modal-imagen/modal-imagen.component';
   declarations: [
     IncrementadorComponent,
     DonaComponent,
-    ModalImagenComponent
+    ModalImagenComponent,
+
   ],
   imports: [
     CommonModule,

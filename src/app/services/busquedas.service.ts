@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { map } from 'rxjs/operators';
 import { Usuario } from '../models/usuario.model';
+import { Hospital } from '../models/hospital.model';
+import { Medico } from '../models/medicos.model';
 
 const base_url = environment.base_url;
 
@@ -26,11 +28,22 @@ get headers(){
 }
 
 private transformarUsuarios( resultados: any[] ):Usuario[]{
-  
+
   return resultados.map(
-    
+
     user=> new Usuario( user.nombre,user.email,'',user.img, user.role,user.google)
     );
+
+}
+private transformarHospitales( resultados: any[] ):Hospital[]{
+
+  return resultados
+
+}
+
+private transformarMedicos( resultados: any[] ):Medico[]{
+
+  return resultados
 
 }
 
@@ -46,6 +59,12 @@ buscar( tipo: 'usuarios'| 'medicos' | 'hospitales', termino: string){
         case 'usuarios':
           return this.transformarUsuarios(resp.resultado)//resp.resultado viene del backend(ver postman)
           break;
+          case 'hospitales':
+            return this.transformarHospitales(resp.resultado)//resp.resultado viene del backend(ver postman)
+            break;
+            case 'medicos':
+              return this.transformarMedicos(resp.resultado)//resp.resultado viene del backend(ver postman)
+              break;
 
         default:
           break;
