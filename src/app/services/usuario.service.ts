@@ -49,6 +49,20 @@ get headers(){
      }
    }
 }
+//extraemos el role del usuario
+get role():'ADMIN_ROLE' | 'USER_ROLE'{
+    return this.usuario.role
+}
+
+//guardar en localStorage
+
+guardarLocalStorage( token: string, menu:any ){
+
+  localStorage.setItem('token' , token);
+  localStorage.setItem('menu' , JSON.stringify(menu));
+}
+
+
 //----------------------------------------------------------
   validarToken(): Observable <boolean>{
        return this.http.get( `${ base_url }/login/renew`,{
@@ -58,11 +72,16 @@ get headers(){
         }).pipe(
           map( (resp:any) => {
             console.log(resp);
-//nota: el  resp.usuarioBD viene del backend-server
-//nota: a la imagen le ponemos = '' para que mno aparzca el error si viene vacia por undefined
+
+          //nota: el  resp.usuarioBD viene del backend-server
+          //nota: a la imagen le ponemos = '' para que mno aparezca el error si viene vacia por undefined
          const {nombre, email, img = '' , role, google ,uid } = resp.usuarioBD;
          this.usuario = new Usuario( nombre, email, '', img, role, google ,uid ) ;
-            localStorage.setItem('token' , resp.token);
+
+          //guardamos en el localStorage
+          this.guardarLocalStorage (resp.token,resp.menu );
+
+
 
             return true
 
@@ -93,7 +112,10 @@ get headers(){
     *  */
    return this.http.post(`${base_url}/usuarios`, formData ).pipe(
             tap(( resp: any)=>{
-                localStorage.setItem('token' , resp.token)
+
+              this.guardarLocalStorage (resp.token,resp.menu );
+
+
             })
          );
   }
@@ -129,7 +151,8 @@ actualizarPerfil( data:{ email:string,nombre:string, role:string }){
    login( formData:LoginForm ){
     return this.http.post(`${base_url}/login`,formData).pipe(
       tap(( resp: any)=>{
-        localStorage.setItem('token', resp.token)
+
+        this.guardarLocalStorage (resp.token,resp.menu );
       })
     );
    }
@@ -140,7 +163,10 @@ actualizarPerfil( data:{ email:string,nombre:string, role:string }){
 loginGoogle( token: string ){
       return this.http.post( `${base_url}/login/google` , {token} ).pipe(
                 tap(( resp: any)=>{
-                    localStorage.setItem('token' , resp.token)
+
+                  this.guardarLocalStorage (resp.token,resp.menu );
+
+
                 })
           );
    }
@@ -149,8 +175,10 @@ loginGoogle( token: string ){
 
 //LOGOUT
 logout(){
-  //elimina el token del usuario que esta conectado
+  //elimina el token del usuario y el menu que esta conectado
   localStorage.removeItem('token');
+  localStorage.removeItem('menu');
+
   //para limpiar el recuadro de google y navegar al login
   google.accounts.id.revoke('reyesblanco1988@gmail.com',()=>{
     this.ngZone.run(()=>{

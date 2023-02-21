@@ -16,6 +16,8 @@ import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component'
 import { HospitalesComponent } from './mantenimientos/hospitales/hospitales.component';
 import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
 import { MedicoComponent } from './mantenimientos/medicos/medico.component';
+import { BusquedasComponent } from './busquedas/busquedas.component';
+import { AdminGuard } from '../guards/admin.guard';
 
 
 const routes: Routes = [
@@ -28,21 +30,23 @@ const routes: Routes = [
 
     //data: { titulo: 'Dashboard'} : especificamos parametros de ruta
 
+    { path: 'account-settings',component: AccountSettingComponent, data: { titulo: 'Account-settings'}},
     { path: 'dashboard',component: DashboardComponent , data: { titulo: 'Dashboard'}},
+    { path: 'buscar/:termino',component: BusquedasComponent, data: { titulo: 'Busquedas'}},
     { path: 'progress',component: ProgressComponent ,data: { titulo: 'ProgressBar'}},
     { path: 'grafica1',component: Grafica1Component ,data: { titulo: 'Grafica1'}},
-    { path: 'account-settings',component: AccountSettingComponent, data: { titulo: 'Account-settings'}},
     { path: 'promesas',component: PromesasComponent, data: { titulo: 'Promesas'}},
     { path: 'rxjs',component: RxjsComponent ,data: { titulo: 'Rxjs'}},
     { path: 'perfil',component: PerfilComponent ,data: { titulo: 'Perfil de usuario'}},
 
 
 //Mantenimientos
-{ path: 'usuarios',component: UsuariosComponent ,data: { titulo: 'Mantenimiento de Usuarios '}},
 { path: 'hospitales',component: HospitalesComponent ,data: { titulo: ' Mantenimiento Hopitales'}},
 { path: 'medicos',component: MedicosComponent ,data: { titulo: 'Mantenimiento de Medicos '}},
 { path: 'medico/:id',component: MedicoComponent ,data: { titulo: 'Mantenimiento de Medicos '}},
 
+//Rutas de admin protegida en AdminGuard  para que el usuario que no sea administrador no acceda a traves de la url directamente al usuarioComponent
+{ path: 'usuarios',canActivate:[ AdminGuard ], component: UsuariosComponent ,data: { titulo: 'Mantenimiento de Usuarios '}},
 
 
 

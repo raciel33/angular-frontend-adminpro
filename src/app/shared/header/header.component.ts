@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
 import { Usuario } from '../../models/usuario.model';
+import { Router } from '@angular/router';
 
 declare const google: any;
 
@@ -18,7 +19,8 @@ export class HeaderComponent  {
 
     button: any;
 
-  constructor( private usuarioService: UsuarioService) {
+  constructor( private usuarioService: UsuarioService,
+                  private router:Router) {
 
         this.usuario = usuarioService.usuario;
 
@@ -34,8 +36,15 @@ export class HeaderComponent  {
      this.usuarioService.logout();
   }
 
-  ngOnInit(): void {
+ //funcion para busqueda global en todas las collections
+ buscar (termino: string){
 
+  //si no escribe nada en el input de busqueda salir al dashboard
+  if( termino.length === 0 ){
+   return;
   }
+    //console.log(termino);
+    this.router.navigateByUrl(`/dashboard/buscar/${ termino }`);
+ }
 
 }

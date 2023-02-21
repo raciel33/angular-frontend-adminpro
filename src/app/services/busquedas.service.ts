@@ -47,6 +47,14 @@ private transformarMedicos( resultados: any[] ):Medico[]{
 
 }
 
+busquedaGloblal( termino:string){
+  const url = `${ base_url }/todo/${ termino }`//ruta definida en el backend(postman)
+
+    return this.http.get( url, this.headers);
+
+}
+
+//busqueda especifica por medicos, usuarios u hospitales
 buscar( tipo: 'usuarios'| 'medicos' | 'hospitales', termino: string){
 
   const url = `${ base_url }/todo/coleccion/${ tipo }/${ termino }`//ruta definida en el backend(postman)

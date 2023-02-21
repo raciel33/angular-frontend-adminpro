@@ -5,7 +5,21 @@ import { Injectable } from '@angular/core';
 })
 export class SidebarService {
 
-  menu:any [] = [
+  /**NOTA: el tratamiento del menu esta en el backend y se graba desde ahi en el localStorage con el objetivo
+   * de mostrar opciones del menu en dependencia del role del usuario
+   */
+
+  public menu = [];
+
+  cargarMenu(){
+    //el menu se carga de la informacion que hay en el localStorage y como viene string se parsea para meterlo en el array
+    console.log('esto viene con error  '+  this.menu);
+
+    this.menu = JSON.parse(localStorage.getItem('menu'));
+     console.log('esto viene con error  '+  this.menu);
+  }
+
+ /* menu:any [] = [
     {
       titulo: 'Dashboard',
       icono: 'mdi mdi-gauge',
@@ -34,5 +48,5 @@ export class SidebarService {
     }
   ]
 
-  constructor() { }
+  constructor() { }*/
 }
