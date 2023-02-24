@@ -1,5 +1,5 @@
 import { RegisterForm } from './../interfaces/register-form-interface';
-import { Injectable, ElementRef, ViewChild, NgZone } from '@angular/core';
+import { Injectable, ElementRef, ViewChild, NgZone, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment.prod';
 import { LoginForm } from '../interfaces/login-form-interfaces';
@@ -21,7 +21,7 @@ const base_url = environment.base_url;
 @Injectable({
   providedIn: 'root'
 })
-export class UsuarioService {
+export class UsuarioService{
 
   /**nota: cuando defimos   public usuario: Usuario lo que hacemos es crear una constante
    * de tipo Usuario si queremos una instancia de tipo Usuario que acceda a todos sus propiedades y metodos
@@ -36,6 +36,8 @@ export class UsuarioService {
 get token():string{
   return localStorage.getItem( 'token') || '';
 }
+
+
 
 //para extraer el uid del usuario
 get uid():string{
@@ -53,35 +55,32 @@ get headers(){
 get role():'ADMIN_ROLE' | 'USER_ROLE'{
     return this.usuario.role
 }
+  //guardar en localStorage
 
-//guardar en localStorage
+  guardarLocalStorage( token:string, menu:any ){
+    localStorage.setItem('token' , token);
+    localStorage.setItem('menu' , JSON.stringify(menu));
+  }
 
-guardarLocalStorage( token: string, menu:any ){
 
-  localStorage.setItem('token' , token);
-  localStorage.setItem('menu' , JSON.stringify(menu));
-}
+
 
 
 //----------------------------------------------------------
   validarToken(): Observable <boolean>{
-       return this.http.get( `${ base_url }/login/renew`,{
+       return this.http.get(`${ base_url }/login/renew`,{
          headers: {
            'x-token':this.token //el this.token esta en la funcion get token()
           }
         }).pipe(
           map( (resp:any) => {
-            console.log(resp);
-
           //nota: el  resp.usuarioBD viene del backend-server
           //nota: a la imagen le ponemos = '' para que mno aparezca el error si viene vacia por undefined
          const {nombre, email, img = '' , role, google ,uid } = resp.usuarioBD;
          this.usuario = new Usuario( nombre, email, '', img, role, google ,uid ) ;
 
           //guardamos en el localStorage
-          this.guardarLocalStorage (resp.token,resp.menu );
-
-
+          this.guardarLocalStorage(resp.token,resp.menu );
 
             return true
 
@@ -95,6 +94,7 @@ guardarLocalStorage( token: string, menu:any ){
 
   constructor( private http:HttpClient, private router: Router,private ngZone: NgZone) {
     //this.googleInit();
+
   }
 
 /**NOTA: con el pipe tap desencadenamos un efecto secundario para
@@ -113,7 +113,7 @@ guardarLocalStorage( token: string, menu:any ){
    return this.http.post(`${base_url}/usuarios`, formData ).pipe(
             tap(( resp: any)=>{
 
-              this.guardarLocalStorage (resp.token,resp.menu );
+              this.guardarLocalStorage(resp.token,resp.menu );
 
 
             })
@@ -151,8 +151,8 @@ actualizarPerfil( data:{ email:string,nombre:string, role:string }){
    login( formData:LoginForm ){
     return this.http.post(`${base_url}/login`,formData).pipe(
       tap(( resp: any)=>{
-
-        this.guardarLocalStorage (resp.token,resp.menu );
+           console.log( 'que traes'+ localStorage);
+        this.guardarLocalStorage(resp.token,resp.menu );
       })
     );
    }
@@ -164,7 +164,7 @@ loginGoogle( token: string ){
       return this.http.post( `${base_url}/login/google` , {token} ).pipe(
                 tap(( resp: any)=>{
 
-                  this.guardarLocalStorage (resp.token,resp.menu );
+                  this.guardarLocalStorage(resp.token,resp.menu );
 
 
                 })
@@ -205,7 +205,7 @@ cargarUsuarios( desde:number = 0){
         user=> new Usuario( user.nombre,user.email,'',user.img, user.role,user.google,user.uid))
 
       return {
-        total: resp.total,
+        total:resp.total,
         usuarios
       };
     })
