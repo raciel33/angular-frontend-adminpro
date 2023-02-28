@@ -68,6 +68,12 @@ get role():'ADMIN_ROLE' | 'USER_ROLE'{
 
 //----------------------------------------------------------
   validarToken(): Observable <boolean>{
+
+    //inicamos esto aqui por el error que me daba en el logout
+    google.accounts.id.initialize({
+      client_id: "1043557574365-qa8ia97sb1q75vn4eur405137gn2geft.apps.googleusercontent.com"
+    });
+
        return this.http.get(`${ base_url }/login/renew`,{
          headers: {
            'x-token':this.token //el this.token esta en la funcion get token()
