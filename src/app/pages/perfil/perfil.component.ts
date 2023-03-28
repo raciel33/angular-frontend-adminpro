@@ -4,6 +4,7 @@ import { UsuarioService } from '../../services/usuario.service';
 import { Usuario } from '../../models/usuario.model';
 import { FileUploadService } from '../../services/file-upload.service';
 import Swal from 'sweetalert2';
+import { CitasService } from '../../services/citas.service';
 
 @Component({
   selector: 'app-perfil',
@@ -20,7 +21,8 @@ export class PerfilComponent implements OnInit {
 
   constructor( private fb: FormBuilder,
     private usuarioService: UsuarioService,
-    private fileUploadService: FileUploadService
+    private fileUploadService: FileUploadService,
+    private citasService: CitasService
     ) {
 
       this.usuario = usuarioService.usuario;
@@ -89,4 +91,13 @@ export class PerfilComponent implements OnInit {
      })
 
   }
+
+
+
+  citaUsuario( usuario: Usuario){
+
+    this.citasService.cargaCitas().subscribe(resp => {
+      console.log( resp );
+    })
+}
 }

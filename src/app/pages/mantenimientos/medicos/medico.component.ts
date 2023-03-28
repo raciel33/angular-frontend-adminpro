@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ModalImagenService } from '../../../services/modal-imagen.service';
 import { Subscription } from 'rxjs';
 import { delay } from 'rxjs/operators';
+import { CitasService } from '../../../services/citas.service';
 
 @Component({
   selector: 'app-medico',
@@ -22,10 +23,12 @@ export class MedicoComponent implements OnInit,OnDestroy {
   public hospitales : Hospital [] = [];//aqui se van almacenar los hospitales de cargarHospitales()
   public hospitalSeleccionado : Hospital;
   public medicoSeleccionado: Medico;
+ // public especialidad:[]= [];
 
   constructor( private fb: FormBuilder,
     private hospitalService:HospitalServiceService,
     private medicoService: MedicosService,
+    public citasService: CitasService,
     private router: Router,
     private activateRoute: ActivatedRoute,
     private modalImagenService:ModalImagenService) { }
@@ -55,6 +58,7 @@ export class MedicoComponent implements OnInit,OnDestroy {
    //------------------------------------------
     this.medicoForm = this.fb.group({
       nombre: ['', Validators.required ],
+    //  especialidad:['',Validators.required],
       hospital: ['', Validators.required ],
     });
     //---------------------------

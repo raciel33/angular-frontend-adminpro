@@ -21,7 +21,7 @@ export class BreadcrumbsComponent implements OnDestroy {
                                  console.log ( data )
 
                                  this.titulo = data.titulo //!!ya tenemos el parametro de la ruta
-                                 document.title = `AdminPro - ${data.titulo}`// para el titulo que aparece en la ventana
+                                 document.title = `HealthAccess - ${data.titulo}`// para el titulo que aparece en la ventana
 
                                    /**Nota : se puede desestructurar la data asi:
                                  *

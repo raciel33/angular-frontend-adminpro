@@ -1,7 +1,9 @@
+import { InicioComponent } from './inicio/inicio.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 
+import { Routes, RouterModule } from '@angular/router';
 import { AdminGuard } from '../guards/admin.guard';
 
 
@@ -10,32 +12,40 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProgressComponent } from './progress/progress.component';
 import { Grafica1Component } from './grafica1/grafica1.component';
 import { AccountSettingComponent } from './account-setting/account-setting.component';
-import { PromesasComponent } from './promesas/promesas.component';
+//import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
-
 import { PerfilComponent } from './perfil/perfil.component';
 import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component';
 import { HospitalesComponent } from './mantenimientos/hospitales/hospitales.component';
 import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
 import { MedicoComponent } from './mantenimientos/medicos/medico.component';
 import { BusquedasComponent } from './busquedas/busquedas.component';
-
-
-import { Routes, RouterModule } from '@angular/router';
+import { CitasComponent } from './citas/citas.component';
+import { InformesComponent } from './informes/informes.component';
+import { VerHospitalesUserComponent } from './ver-hospitales-user/ver-hospitales-user.component';
+import { AgendaActividadesComponent } from './agenda-actividades/agenda-actividades.component';
+import { DonarSangreComponent } from './donar-sangre/donar-sangre.component';
 
 const childRoutes: Routes =[
 
    //data: { titulo: 'Dashboard'} : especificamos parametros de ruta
   //estas rutas comparten el mismo template
 
+    { path: 'dashboard',component: DashboardComponent , data: { titulo: 'dashboard'}},
     { path: 'account-settings',component: AccountSettingComponent, data: { titulo: 'Account-settings'}},
-    { path: 'dashboard',component: DashboardComponent , data: { titulo: 'Dashboard'}},
+    { path: 'citas',component: CitasComponent ,data: { titulo: 'Citas del usuario'}},
     { path: 'buscar/:termino',component: BusquedasComponent, data: { titulo: 'Busquedas'}},
-    { path: 'progress',component: ProgressComponent ,data: { titulo: 'ProgressBar'}},
-    { path: 'grafica1',component: Grafica1Component ,data: { titulo: 'Grafica1'}},
-    { path: 'promesas',component: PromesasComponent, data: { titulo: 'Promesas'}},
-    { path: 'rxjs',component: RxjsComponent ,data: { titulo: 'Rxjs'}},
+    { path: 'progress',component: ProgressComponent ,data: { titulo: 'Donacion'}},
+    { path: 'grafica1',component: Grafica1Component ,data: { titulo: 'Estadísticas '}},
+    { path: 'informes',component: InformesComponent ,data: { titulo: 'Informes Medicos'}},
+    { path: 'inicio',component: InicioComponent, data: { titulo: 'Inicio'}},
+    { path: 'rxjs',component: RxjsComponent},
     { path: 'perfil',component: PerfilComponent ,data: { titulo: 'Perfil de usuario'}},
+    { path: 'userHospital',component: VerHospitalesUserComponent },
+    { path: 'agenda',component: AgendaActividadesComponent ,data: { titulo: 'Agenda de actividades'}},
+    { path: 'donar',component: DonarSangreComponent ,data: { titulo: 'Donación de sangre'}},
+
+
 
 
        //Mantenimientos

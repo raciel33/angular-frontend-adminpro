@@ -1,0 +1,16 @@
+<h2>Hospitales asociados</h2>
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <button class="btn btn-outline-danger " routerLink="../inicio">Volver</button>
+    <button class="btn btn-primary " routerLink="../citas">Pedir cita</button>
+</div>
+<hr>
+<div class="row row-cols-1 row-cols-md-4 g-4 animated zoomIn fast">
+    <div class="col" *ngFor="let hospital of hospitales">
+        <div class="card">
+            <img [src]=" hospital.img | imagen: 'hospitales' " style="height: 150px;" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{hospital.nombre}}</h5>
+            </div>
+        </div>
+    </div>
+</div>

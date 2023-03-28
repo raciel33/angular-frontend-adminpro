@@ -1,16 +1,18 @@
-<section id="wrapper" class="login-register login-sidebar" style="background-image:url(../assets/images/background/login-register.jpg);">
-    <div class="login-box card">
+<section id="wrapper" class="login-register login-sidebar animated fadeIn fast " style="background-image:url(../assets/images/background/fondo-hospital_1.jpg);">
+    <div class="login-box card ">
         <div class="card-body">
             <!--definimos el formulario , la info viene de register.component.ts-->
-            <form class="form-horizontal form-material" id="loginform" autocomplete="off" [formGroup]="registerForm" (ngSubmit)="crearUsuario()">
+            <form class="form-horizontal form-material " id="loginform" autocomplete="off" [formGroup]="registerForm" (ngSubmit)="crearUsuario()">
 
-                <a href="javascript:void(0)" class="text-center db"><img src="../assets/images/logo-icon.png" alt="Home" /><br/><img src="../assets/images/logo-text.png" alt="Home" /></a>
-                <h3 class="box-title m-t-40 m-b-0">Register Now</h3><small>Create your account and enjoy</small>
+                <a href="javascript:void(0)" class="text-center db"><img src="../assets/images/logo-form-light.png" style="width: 70px;height: 70px;" alt="Home" />
+                    <h2>Health Access</h2>
+                </a>
+                <h3 class="box-title m-t-20 m-b-0">Regístrese ahora</h3><small>Crea una cuenta para acceder</small>
                 <div class="form-group m-t-20">
 
                     <!--formControlName="nombre" le asigamos este campo de formulario a este input-->
                     <div class="col-xs-12">
-                        <input class="form-control" type="text" placeholder="Name" formControlName="nombre">
+                        <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre">
                     </div>
                 </div>
                 <!--formControlName="email" le asigamos este campo de formulario a este input-->
@@ -22,13 +24,30 @@
                 <!--formControlName="password" le asigamos este campo de formulario a este input-->
                 <div class="form-group ">
                     <div class="col-xs-12">
-                        <input class="form-control" type="password" placeholder="Password" formControlName="password">
+                        <div class="input-group">
+                            <input class="form-control" [type]="show ? 'text': 'password'" placeholder="Password" formControlName="password">
+                            <span class="input-group-text" *ngIf="!show">
+                           <img (click)="showPassword()" src="../../../assets/images/icon/hide.png" width="20px" height="20px">
+                        </span>
+                            <span class="input-group-text" *ngIf="show">
+                          <img (click)="showPassword()" src="../../../assets/images/icon/eye.png" width="20px" height="20px">
+                       </span>
+                        </div>
+
                     </div>
                 </div>
                 <!--formControlName="password2" le asigamos este campo de formulario a este input-->
                 <div class="form-group">
                     <div class="col-xs-12">
-                        <input class="form-control" type="password" required="" placeholder="Confirm Password" formControlName="password2">
+                        <div class="input-group">
+                            <input class="form-control" [type]="show ? 'text': 'password'" placeholder="Confirm Password" formControlName="password2">
+                            <span class="input-group-text" *ngIf="!show">
+                           <img (click)="showPassword()" src="../../../assets/images/icon/hide.png" width="20px" height="20px">
+                        </span>
+                            <span class="input-group-text" *ngIf="show">
+                          <img (click)="showPassword()" src="../../../assets/images/icon/eye.png" width="20px" height="20px">
+                       </span>
+                        </div>
                     </div>
                 </div>
                 <!--formControlName="terminos" le asigamos este campo de formulario a este input-->

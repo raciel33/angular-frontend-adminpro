@@ -12,6 +12,7 @@ export class Medico {
 
   constructor(
     public nombre: string,
+    public especialidad?:string,
     public _id?: string,
     public img?: string,
     public usuario?: _medicoUser,

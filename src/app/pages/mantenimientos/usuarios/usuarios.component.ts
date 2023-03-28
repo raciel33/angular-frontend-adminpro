@@ -26,7 +26,8 @@ export class UsuariosComponent implements OnInit,OnDestroy {
 
   constructor(private usuariosService:UsuarioService,
    private busquedaService:BusquedasService,
-   private modalImagenService: ModalImagenService
+   private modalImagenService: ModalImagenService,
+
    ) { }
 
 
@@ -130,4 +131,8 @@ export class UsuariosComponent implements OnInit,OnDestroy {
     this.modalImagenService.abrirModal('usuarios',usuario.uid,usuario.img);
 
     }
+
+
+
+
 }

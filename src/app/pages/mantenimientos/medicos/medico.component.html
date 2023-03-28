@@ -24,9 +24,9 @@
                             <div class="input-group-addon"><i class="ti-user"></i></div>
 
                             <input type="text" formControlName="nombre" class="form-control" id="exampleInputuname" placeholder="Nombre del medico">
-
                         </div>
                     </div>
+
                     <div class="form-group row">
                         <label for="exampleInputEmail1">Hospital</label>
                         <div class="input-group">
@@ -41,6 +41,17 @@
                         </div>
                     </div>
 
+                    <!--  <div class="form-group row">
+                        <label for="exampleInputEmail1">Especialidad</label>
+                        <div class="input-group">
+                            <select class="form-control" formControlName="especialidad" name="" id="">
+                          <option value="">Especialidad</option>
+
+                        <option *ngFor="let especialidad of citasService.especialidad"
+                        [value]="hospital._id">{{ especialidad }}</option>
+                      </select>
+                      </div>
+                  </div>-->
 
                     <div class="form-group row m-b-0">
 

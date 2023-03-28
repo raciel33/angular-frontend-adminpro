@@ -3,6 +3,8 @@ import { environment } from './../../environments/environment';
 const   base_url = environment.base_url;
 
 
+
+
 export class Usuario{
 
       constructor(

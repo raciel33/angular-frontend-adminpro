@@ -16,12 +16,15 @@ export class LoginComponent implements AfterViewInit {
 
   @ViewChild( 'googleBtn') googleBtn: ElementRef;//Hace referncia al boton de google
 
- //para ver si el formulario ha sido submit
+   //para mostrar y ocultar la contraseña
+    show:boolean=false;
 
-     public formSubmitted = false;
+   //para ver si el formulario ha sido submit
 
-     //definimos los campos del formulario y establecemos las validaciones
-     public loginForm = this.fb.group({
+    public formSubmitted = false;
+
+  //definimos los campos del formulario y establecemos las validaciones
+  public loginForm = this.fb.group({
 
       /* va predefinido en el campo email lo que tenemos en el campo email del localStorage
       o de lo contrario un string vacio: localStorage.getItem('email') || ''*/
@@ -64,7 +67,7 @@ export class LoginComponent implements AfterViewInit {
           this.usuarioService.loginGoogle ( response.credential ).subscribe( resp=>{
             //console.log( {login: resp })
             this.ngZone.run(()=>{
-              this.router.navigateByUrl('/');
+              this.router.navigateByUrl('/dashboard/inicio');
             })
           })
   }
@@ -86,7 +89,7 @@ export class LoginComponent implements AfterViewInit {
         localStorage.removeItem('email');
       }
          // Navegar al Dashboard
-         this.router.navigateByUrl('/');
+         this.router.navigateByUrl('/dashboard/inicio');
 
     //si hay algun error
   },(err)=>{
@@ -95,4 +98,11 @@ export class LoginComponent implements AfterViewInit {
   });
 
   }
+
+
+  //para mostrar y ocultar la contraseña
+showPassword(){
+  this.show = !this.show
+
+}
 }

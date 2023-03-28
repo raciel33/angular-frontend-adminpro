@@ -15,6 +15,8 @@ export class RegisterComponent implements OnInit {
 
   //para ver si el formulario ha sido submit
   public formSubmitted = false;
+ //para mostrar y ocultar la contraseña
+  show:boolean=false;
 
   //definimos los campos del formulario y establecemos las validaciones
   public registerForm = this.fb.group({
@@ -98,6 +100,12 @@ passwordIguales(pass1Name, pass2Name){
 
         }
   }
+
+    //para mostrar y ocultar la contraseña
+showPassword(){
+  this.show = !this.show
+
+}
 //-----------------------------------------------------------------------
   //validacion del check
   aceptaTermino(){

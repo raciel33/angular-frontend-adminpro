@@ -1,0 +1,120 @@
+<h2>{{usuario.nombre }}</h2>
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <button class="btn btn-outline-danger " routerLink="../inicio">Volver</button>
+    <button class="btn btn-primary " (click)="abrirModalCita()">Pedir cita</button>
+
+</div>
+<hr>
+<!--
+<div class="card-group" *ngFor="let item of citas">
+    <div class="card mt-3" *ngIf="usuario.uid === item.usuario._id else noCita">
+        <div class="card-body d-grid gap-2">
+            <h3 class="card-title text-center">{{item.hospital.nombre}}</h3>
+            <p class="card-text text-center">Especialidad: <span class="text-primary">{{item.especialidad}}</span></p>
+            <p class="card-text text-center">Fecha: <span class="text-primary">{{item.fecha}}</span></p>
+            <p class="card-text text-center">Hora: <span class="text-primary">{{item.hora}}</span></p>
+            <button class="btn btn-outline-primary text-center" type="button" (click)="borrarCita(item._id)">Eliminar cita</button>
+
+        </div>
+    </div>
+</div>
+-->
+<div class="card mb-3 fadeIn fast" *ngFor="let item of citas" style="max-width: 540px;">
+    <div class="row g-0" *ngIf="usuario.uid === item.usuario._id">
+        <div class="col-md-4">
+            <img [src]=" item.hospital.img | imagen: 'hospitales' " class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{item.hospital.nombre}}</h5>
+                <p class="card-text">Especialidad: <span class="text-primary">{{item.especialidad}}</span></p>
+                <p class="card-text ">Fecha: <span class="text-primary">{{item.fecha}}</span></p>
+                <p class="card-text">Hora: <span class="text-primary">{{item.hora}}</span></p>
+
+                <button class="btn btn-outline-danger text-center" type="button" (click)="borrarCita(item._id)">Eliminar cita</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal para sacar cita -->
+<div class="fotoModalImagen animated fadeIn fast" [class.oculto]="citasServices.ocultarModal">
+    <!-- style="display: block; hace visible el modal-->
+    <div id="responsive-modal" class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: block;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-center ">
+                    <h4 class="modal-title ">Solicitud de cita</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form" [formGroup]="citasForm" (submit)="crearCita()">
+                        <div class="form-group row">
+                            <!--Calendario-->
+                            <div class="text-center">Seleccione un día
+                                <mat-card class="demo-inline-calendar-card mx-5">
+                                    <mat-calendar [(selected)]="selected">
+                                    </mat-calendar>
+                                </mat-card>
+                            </div>
+                            <hr>
+                            <!--Fecha-->
+                            <div class="input-group">
+                                <span class="input-group-text">Fecha seleccionada:</span>
+                                <input class="form-control text-primary" type="text" formControlName="fecha" [ngModel]="selected | date  " autocomplete="on" /> <input type="text" aria-label="Last name" class="form-control">
+                            </div>
+                            <!--Hospitales-->
+                            <label class="mt-3" for="exampleInputEmail1">Hospital</label>
+                            <div class="input-group mb-4">
+                                <select class="form-control animated fadeIn fast" formControlName="hospital" name="" id="">
+                                   <option value="">Seleccione hospital</option>
+                                   <!-- *ngFor="let hospital of hospitales" se cargar los hospitales en el select
+                                   [value]="hospital._id" este va ser el valor de este campo
+                                 -->
+                                   <option *ngFor="let hospital of hospitales"
+                                   [value]="hospital._id">{{hospital.nombre}}</option>
+                             </select>
+                            </div>
+                            <!--Especialidad-->
+                            <div class="form-group col">
+                                <label for="exampleInputuname">Especialidad</label>
+                                <div class="input-group">
+                                    <select class="form-control animated fadeIn fast" formControlName="especialidad" name="" id="">
+                                        <option value="">Seleccione especialidad</option>
+                                        <option *ngFor="let especialidad of citasServices.especialidad">{{especialidad}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--Hora-->
+                            <div class="form-group col">
+                                <label for="exampleInputuname">Hora</label>
+                                <div class="input-group">
+                                    <select class="form-control animated fadeIn fast" formControlName="hora" name="" id="">
+                                  <option value="">Horario</option>
+                                  <option *ngFor="let hora of citasServices.horaCita">{{hora}}</option>
+                                </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!--manejo de validacion del formulario-->
+                        <div class="row animated fadeIn fast" *ngIf="citasForm.invalid">
+                            <div class="col text-danger">
+                                <p *ngIf="campoNoValido('hospital')">El hospital es obligatorio</p>
+                                <p *ngIf="campoNoValido('especialidad')">La especialidad es obligatoria</p>
+                                <p *ngIf="campoNoValido('fecha')">La fecha es obligatoria</p>
+                                <p *ngIf="campoNoValido('hora')">La hora es obligatoria</p>
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" (click)="cerrarModalCita()" class="btn btn-default waves-effect" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-danger waves-effect waves-light">Solicitar</button>
+                        </div>
+                    </form>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

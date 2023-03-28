@@ -50,7 +50,6 @@ export class HospitalesComponent implements OnInit,OnDestroy {
 
       this.hospitales = resp;//almacenamos en el nuestro array la respuesta que viene del backend
 
-
     })
   }
 

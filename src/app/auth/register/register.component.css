@@ -44,8 +44,10 @@ Login register and recover password Page
 }
 
 .login-box {
-    width: 400px;
-    margin: 0 auto;
+    width: 500px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .login-box .footer {

@@ -42,6 +42,7 @@
                             <tr>
                                 <th class="w-15">Foto</th>
                                 <th>Nombre</th>
+                                <th>Especialidad</th>
                                 <th>Hospital </th>
                                 <th class="text-center">Editar/Borrar</th>
                             </tr>
@@ -52,6 +53,7 @@
                                     <img (click)="abrirModal(medico)" class="avatar cursor" [src]=" medico.img | imagen: 'medicos' " alt="medico.nombre">
                                 </td>
                                 <td>{{medico.nombre}}</td>
+                                <td>{{medico.especialidad}}</td>
                                 <td>{{medico.hospital.nombre}}</td>
 
 

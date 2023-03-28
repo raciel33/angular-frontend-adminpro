@@ -1,19 +1,90 @@
 <div class="row">
-    <div class="col-6">
-        <app-dona [title]="'Ventas'"></app-dona>
+    <div class="col-lg-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex">
+                    <div class="m-r-20 align-self-center"><img src="../assets/images/icon/gota.png" alt="Income" style="max-width: 50px;max-height: 50px;"></div>
+                    <div class="align-self-center">
+                        <h6 class="text-muted m-t-10 m-b-0">Donacion Sangre</h6>
+                        <h2 class="m-t-0">+100000</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-6">
-        <app-dona [labels]="labels1" [data]="data1">
-        </app-dona>
+    <div class="col-lg-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex">
+                    <div class="m-r-20 align-self-center"><img src="../assets/images/icon/especialidad.png" alt="Income"></div>
+                    <div class="align-self-center">
+                        <h6 class="text-muted m-t-10 m-b-0">Especialidades</h6>
+                        <h2 class="m-t-0">+30</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex">
+                    <div class="m-r-20 align-self-center"><img src="../assets/images/icon/hospital.png" style="height: 70px;width: 70px;" alt="Income"></div>
+                    <div class="align-self-center">
+                        <h6 class="text-muted m-t-10 m-b-0">Hospitales</h6>
+                        <h2 class="m-t-0">20</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex">
+                    <div class="m-r-20 align-self-center"><img src="../assets/images/icon/staff.png" alt="Income"></div>
+                    <div class="align-self-center">
+                        <h6 class="text-muted m-t-10 m-b-0">Médicos</h6>
+                        <h2 class="m-t-0">+10000</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <div class="row">
     <div class="col-6">
-        <app-dona [data]="data2" [labels]="labels2"></app-dona>
-
+        <app-dona [title]="'Donacion de sangre'" [labels]="anyos" [data]="dataDonacion"></app-dona>
     </div>
     <div class="col-6">
-        <app-dona [data]="data2"></app-dona>
-
+        <app-bar-charts [title]="'Trasnsplantes'" [labelsBar]="anyos" [dataBar]="dataTransplantes"></app-bar-charts>
     </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title text-primary text-center">Ranking de Cirugías realizadas</h3>
+                <div class="table-responsive">
+                    <table class="table full-color-table full-primary-table hover-table">
+                        <thead>
+                            <tr>
+                                <th>Hospital</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let hospital of hospitales">
+                                <td>{{hospital.nombre}}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <app-dona [title]="'Plazas hospitalarias'" [labels]="anyos" [data]="plazasHospitalarias"></app-dona>
+    </div>
+
 </div>

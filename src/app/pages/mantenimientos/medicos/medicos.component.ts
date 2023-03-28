@@ -52,7 +52,7 @@ export class MedicosComponent implements OnInit ,OnDestroy{
 
       this.medicos = resp;//almacenamos en el nuestro array la respuesta que viene del backend
 
-
+      console.log(this.medicos);
     })
   }
 
