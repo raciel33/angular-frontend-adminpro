@@ -6,8 +6,8 @@
             <div class="card-header text-center">Informes Médicos</div>
             <div class="card-body">
                 <h5 class="card-title">Informes emitidos</h5>
-                <p class="card-text">No tiene informes...</p>
-            </div>
+                <p class="card-text">{{usuario.informe}}</p>
+                <button class="btn btn-outline-primary" (click)="descarga(usuario.informe)">Descarga informe</button> </div>
         </div>
     </div>
     <div class="col">

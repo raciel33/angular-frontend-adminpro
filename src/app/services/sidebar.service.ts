@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class SidebarService {
 
-  /**NOTA: el tratamiento del menu esta en el backend y se graba desde ahi en el localStorage con el objetivo
+  /** NOTA: el tratamiento del menu esta en el backend y se graba desde ahi en el localStorage con el objetivo
    * de mostrar opciones del menu en dependencia del role del usuario
    */
 
@@ -22,7 +22,7 @@ export class SidebarService {
        icono: 'mdi mdi-gauge',
        submenu : [
          { titulo: 'Inicio', url: 'inicio'},
-         { titulo: 'Donación', url: 'progress'},
+         { titulo: 'Valoracion', url: 'progress'},
          { titulo: 'Estadisticas', url: 'grafica1'},
 
        ]

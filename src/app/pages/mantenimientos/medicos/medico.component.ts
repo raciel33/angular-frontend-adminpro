@@ -58,7 +58,7 @@ export class MedicoComponent implements OnInit,OnDestroy {
    //------------------------------------------
     this.medicoForm = this.fb.group({
       nombre: ['', Validators.required ],
-    //  especialidad:['',Validators.required],
+      especialidad:['',Validators.required],
       hospital: ['', Validators.required ],
     });
     //---------------------------
@@ -103,7 +103,7 @@ export class MedicoComponent implements OnInit,OnDestroy {
 
       }
        //desestrucuramos de la respuesta el nombre del medico y el _id del hospital
-      const { nombre, hospital:{ _id} } = medico;
+      const { nombre, especialidad, hospital:{ _id} } = medico;
 
       // console.log(nombre,_id);
 
@@ -112,7 +112,7 @@ export class MedicoComponent implements OnInit,OnDestroy {
        /*le asignamos al formulario de medico los valores desestruturados para que carge
        automaticamente estos valores al editar un medico
         */
-       this.medicoForm.setValue({ nombre, hospital: _id})
+       this.medicoForm.setValue({ nombre, especialidad, hospital: _id})
     })
 
   }

@@ -47,7 +47,7 @@ export class RegisterComponent implements OnInit {
       console.log('usuario creado');
       console.log( resp );
       //cuando creeemos el usuario navegar al dashboard
-      this.router.navigateByUrl( '/')
+      this.router.navigateByUrl( '/dashboard/inicio')
 
     },(err) =>{
 

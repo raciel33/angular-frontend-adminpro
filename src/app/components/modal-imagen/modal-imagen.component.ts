@@ -15,6 +15,7 @@ export class ModalImagenComponent implements OnInit {
   public imagenSubir:File;
   public imagenTemp:any;
 
+
   constructor(public modalImagenService:ModalImagenService,
                public fileUploadService:FileUploadService,
                public usuarioService:UsuarioService) { }
@@ -45,6 +46,7 @@ export class ModalImagenComponent implements OnInit {
   }
 
   subirImagen(){
+
     const id = this.modalImagenService.id;
     const tipo = this.modalImagenService.tipo;
 
@@ -54,6 +56,8 @@ export class ModalImagenComponent implements OnInit {
     //si se va actualizar la imagen del usuario que esta activo en ese momento actualizala en todos lados automaticamente
     then( img => {
        if (id === this.usuarioService.uid) {
+        console.log("este es la imagen" + img);
+
         this.usuarioService.usuario.img = img
 
        }
@@ -73,4 +77,12 @@ export class ModalImagenComponent implements OnInit {
      })
 
   }
+
+
+
+
+
+
+
+
 }

@@ -11,6 +11,11 @@ const base_url = environment.base_url
 })
 export class HospitalServiceService {
 
+  hospitales:Hospital;
+  private _ocultarModal: boolean = true;//para ocultar y mostrar el modal
+
+
+
   //Para extraer el token
 get token():string{
   return localStorage.getItem( 'token') || '';
@@ -68,6 +73,14 @@ get headers(){
 
 
   }
+
+  abrirModalCita(){
+    this._ocultarModal = false;
+
+  }
+  cerrarModal(){
+    this._ocultarModal = true
+ }
 
 
 }

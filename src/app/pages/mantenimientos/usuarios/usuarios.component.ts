@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import { ModalImagenService } from '../../../services/modal-imagen.service';
 import { delay } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
+import { ModalInformeService } from '../../../services/modal-informe.service';
 
 @Component({
   selector: 'app-usuarios',
@@ -15,6 +16,7 @@ import { Subscription } from 'rxjs';
 })
 export class UsuariosComponent implements OnInit,OnDestroy {
 
+
   public totalUsuarios:number = 0;
   public usuarios:Usuario [] = [];
   public usuariosTemp:Usuario [] = [];
@@ -23,10 +25,12 @@ export class UsuariosComponent implements OnInit,OnDestroy {
   public cargando: boolean = true;
 
   public imgSubs:Subscription;
+  public informeSubs:Subscription;
 
   constructor(private usuariosService:UsuarioService,
    private busquedaService:BusquedasService,
    private modalImagenService: ModalImagenService,
+   public modalInformeServices: ModalInformeService
 
    ) { }
 
@@ -38,6 +42,7 @@ export class UsuariosComponent implements OnInit,OnDestroy {
 
 
   ngOnInit(): void {
+
     this.cargarUsuarios();
 
     //para que se refresque actualice la imagen automaticamente
@@ -45,8 +50,20 @@ export class UsuariosComponent implements OnInit,OnDestroy {
     pipe(
       delay(100)//retardamos un poco pa que de tiempo la carga
     )
+    .subscribe(img=> this.cargarUsuarios());
+
+
+//-------------------------------------------------------------------------
+    //para que se refresque actualice la imagen automaticamente
+    this.informeSubs = this.informeSubs =  this.modalInformeServices.nuevoInforme.
+    pipe(
+      delay(100)//retardamos un poco pa que de tiempo la carga
+    )
     .subscribe(img=> this.cargarUsuarios())
   }
+
+
+
 
   cambiarPagina( valor:number){
 
@@ -71,9 +88,8 @@ export class UsuariosComponent implements OnInit,OnDestroy {
          this.totalUsuarios = total;
          this.usuarios = usuarios;
          this.usuariosTemp = usuarios;
-
          this.cargando = false;
-
+            console.log( this.usuarios);
        })
   }
 
@@ -132,7 +148,12 @@ export class UsuariosComponent implements OnInit,OnDestroy {
 
     }
 
+abrirModalInforme( usuario: Usuario){
 
+
+  this.modalInformeServices.abrirModalInforme('usuarios',usuario.uid,usuario.img);
+
+}
 
 
 }

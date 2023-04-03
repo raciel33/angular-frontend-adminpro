@@ -40,19 +40,11 @@ Login register and recover password Page
     height: 100%;
     width: 100%;
     padding: 10% 0;
-    position: fixed;
-}
-
-.login-box {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    position: fixed
 }
 
 .login-box .footer {
     width: 100%;
-    left: 0px;
-    right: 0px;
 }
 
 .login-box .social {

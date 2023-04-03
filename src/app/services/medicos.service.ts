@@ -53,7 +53,7 @@ get headers(){
 
  }
 
- crearMedico( medico: { nombre:string, hospital:string } ){
+ crearMedico( medico: { nombre:string,especialidad:string, hospital:string } ){
 
         const url = `${ base_url }/medicos`;//ruta definida en el backend(postman)
 

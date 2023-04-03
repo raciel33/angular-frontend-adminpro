@@ -12,6 +12,7 @@ export class Usuario{
        public email:string,
        public password?:string,
        public img?:string,
+       public informe?:string,
        public role?:'ADMIN_ROLE' | 'USER_ROLE',//tipos de role
        public google?:boolean,
        public uid?:string,
@@ -33,6 +34,24 @@ export class Usuario{
       //si viene de validacion por email
      else if (this.img ) {
           return `${ base_url }/uploads/usuarios/${ this.img }`;
+        } else {
+          return `${ base_url }/uploads/usuarios/not-image`;
+        }
+
+      }
+
+
+           //si la imagen existe muestrala y sino muestra la imagen por defecto
+    get informeUrl(){
+
+      //si no existe la imagen
+      if( !this.informe){
+        return `${ base_url }/uploads/usuarios/not-image`;
+      }
+
+      //si viene de validacion por email
+     else if (this.img ) {
+          return `${ base_url }/uploads/usuarios/${ this.informe }`;
         } else {
           return `${ base_url }/uploads/usuarios/not-image`;
         }

@@ -38,6 +38,8 @@
                                 <th>Role</th>
                                 <th>Auth</th>
                                 <th class="text-nowrap">Action</th>
+                                <th>informes</th>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -65,7 +67,13 @@
 
                                     </a>
                                     <a data-toggle="tooltip" class="cursor" (click)="eliminarUsuario(usuario)" data-original-title="Borrar">
-                                        <i class="fa fa-close text-danger text-center"></i> </a>
+                                        <i class="fa fa-close text-danger text-center"></i>
+                                    </a>
+                                    <img class="avatar cursor ml-2" (click)="abrirModalInforme(usuario)" src="../../../../assets/images/icon/iconos.png" style="width: 25px;height: 25px;">
+                                </td>
+                                <td>
+                                    {{usuario.informe}}
+
                                 </td>
                             </tr>
                         </tbody>

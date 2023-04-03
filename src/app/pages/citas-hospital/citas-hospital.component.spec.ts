@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ModalCitasComponent } from './modal-citas.component';
+import { CitasHospitalComponent } from './citas-hospital.component';
 
-describe('ModalCitasComponent', () => {
-  let component: ModalCitasComponent;
-  let fixture: ComponentFixture<ModalCitasComponent>;
+describe('CitasHospitalComponent', () => {
+  let component: CitasHospitalComponent;
+  let fixture: ComponentFixture<CitasHospitalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ModalCitasComponent ]
+      declarations: [ CitasHospitalComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ModalCitasComponent);
+    fixture = TestBed.createComponent(CitasHospitalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

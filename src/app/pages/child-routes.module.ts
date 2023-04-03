@@ -25,6 +25,7 @@ import { InformesComponent } from './informes/informes.component';
 import { VerHospitalesUserComponent } from './ver-hospitales-user/ver-hospitales-user.component';
 import { AgendaActividadesComponent } from './agenda-actividades/agenda-actividades.component';
 import { DonarSangreComponent } from './donar-sangre/donar-sangre.component';
+import { CitasHospitalComponent } from './citas-hospital/citas-hospital.component';
 
 const childRoutes: Routes =[
 
@@ -35,7 +36,7 @@ const childRoutes: Routes =[
     { path: 'account-settings',component: AccountSettingComponent, data: { titulo: 'Account-settings'}},
     { path: 'citas',component: CitasComponent ,data: { titulo: 'Citas del usuario'}},
     { path: 'buscar/:termino',component: BusquedasComponent, data: { titulo: 'Busquedas'}},
-    { path: 'progress',component: ProgressComponent ,data: { titulo: 'Donacion'}},
+    { path: 'progress',component: ProgressComponent },
     { path: 'grafica1',component: Grafica1Component ,data: { titulo: 'Estadísticas '}},
     { path: 'informes',component: InformesComponent ,data: { titulo: 'Informes Medicos'}},
     { path: 'inicio',component: InicioComponent, data: { titulo: 'Inicio'}},
@@ -44,17 +45,17 @@ const childRoutes: Routes =[
     { path: 'userHospital',component: VerHospitalesUserComponent },
     { path: 'agenda',component: AgendaActividadesComponent ,data: { titulo: 'Agenda de actividades'}},
     { path: 'donar',component: DonarSangreComponent ,data: { titulo: 'Donación de sangre'}},
-
-
+    { path: 'citasHospital/:id',component: CitasHospitalComponent ,data: { titulo: 'Citas en el hospital'}},
 
 
        //Mantenimientos
+       { path: 'usuarios',component: UsuariosComponent ,data: { titulo: ' Mantenimiento Usuarios'}},
        { path: 'hospitales',component: HospitalesComponent ,data: { titulo: ' Mantenimiento Hopitales'}},
        { path: 'medicos',component: MedicosComponent ,data: { titulo: 'Mantenimiento de Medicos '}},
        { path: 'medico/:id',component: MedicoComponent ,data: { titulo: 'Mantenimiento de Medicos '}},
 
-       //Rutas de admin protegida en AdminGuard  para que el usuario que no sea administrador no acceda a traves de la url directamente al usuarioComponent
-       { path: 'usuarios',canActivate:[ AdminGuard ], component: UsuariosComponent ,data: { titulo: 'Mantenimiento de Usuarios '}},
+       //Rutas de admin protegida en AdminGuard  para que el usuario que no sea administrador no acceda a traves de la url directamente al usuarioComponent(lo he quitado temporalmente)
+      // { path: 'usuarios',canActivate:[ AdminGuard ], component: UsuariosComponent ,data: { titulo: 'Mantenimiento de Usuarios '}},
 ]
 
 

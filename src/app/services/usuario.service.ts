@@ -82,8 +82,8 @@ get role():'ADMIN_ROLE' | 'USER_ROLE'{
           map( (resp:any) => {
           //nota: el  resp.usuarioBD viene del backend-server
           //nota: a la imagen le ponemos = '' para que mno aparezca el error si viene vacia por undefined
-         const {nombre, email, img = '' , role, google ,uid } = resp.usuarioBD;
-         this.usuario = new Usuario( nombre, email, '', img, role, google ,uid ) ;
+         const {nombre, email, img = '' ,informe, role, google ,uid } = resp.usuarioBD;
+         this.usuario = new Usuario( nombre, email, '', img, informe, role, google ,uid ) ;
 
           //guardamos en el localStorage
           this.guardarLocalStorage(resp.token,resp.menu );
@@ -208,7 +208,7 @@ cargarUsuarios( desde:number = 0){
     //para crear una instancia del modelo de usuario que acceda a sus propiedades y sus metodos
     map(resp=>{
        const usuarios = resp.usuarios.map(
-        user=> new Usuario( user.nombre,user.email,'',user.img, user.role,user.google,user.uid))
+        user=> new Usuario( user.nombre,user.email,'',user.img,user.informe, user.role,user.google,user.uid))
 
       return {
         total:resp.total,

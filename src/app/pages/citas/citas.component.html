@@ -5,24 +5,10 @@
 
 </div>
 <hr>
-<!--
-<div class="card-group" *ngFor="let item of citas">
-    <div class="card mt-3" *ngIf="usuario.uid === item.usuario._id else noCita">
-        <div class="card-body d-grid gap-2">
-            <h3 class="card-title text-center">{{item.hospital.nombre}}</h3>
-            <p class="card-text text-center">Especialidad: <span class="text-primary">{{item.especialidad}}</span></p>
-            <p class="card-text text-center">Fecha: <span class="text-primary">{{item.fecha}}</span></p>
-            <p class="card-text text-center">Hora: <span class="text-primary">{{item.hora}}</span></p>
-            <button class="btn btn-outline-primary text-center" type="button" (click)="borrarCita(item._id)">Eliminar cita</button>
-
-        </div>
-    </div>
-</div>
--->
-<div class="card mb-3 fadeIn fast" *ngFor="let item of citas" style="max-width: 540px;">
+<div class="card mb-2 fadeIn fast" *ngFor="let item of citas" style="max-width: 540px;">
     <div class="row g-0" *ngIf="usuario.uid === item.usuario._id">
         <div class="col-md-4">
-            <img [src]=" item.hospital.img | imagen: 'hospitales' " class="img-fluid rounded-start" alt="...">
+            <img [src]=" item.hospital.img | imagen: 'hospitales' " class="img-fluid rounded-start h-100" alt="...">
         </div>
         <div class="col-md-8">
             <div class="card-body">
@@ -38,7 +24,7 @@
 </div>
 
 <!--Modal para sacar cita -->
-<div class="fotoModalImagen animated fadeIn fast" [class.oculto]="citasServices.ocultarModal">
+<div class="fotoModalImagen container-fluid animated fadeIn fast" [class.oculto]="citasServices.ocultarModal">
     <!-- style="display: block; hace visible el modal-->
     <div id="responsive-modal" class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: block;">
         <div class="modal-dialog">

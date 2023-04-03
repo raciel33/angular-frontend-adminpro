@@ -6,6 +6,8 @@ import { ModalImagenService } from '../../../services/modal-imagen.service';
 import { delay } from 'rxjs/operators';
 import { BusquedasService } from '../../../services/busquedas.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-hospitales',
@@ -21,10 +23,14 @@ export class HospitalesComponent implements OnInit,OnDestroy {
   private imgSubs:Subscription;
 
 
-  constructor( private hospitalService:HospitalServiceService,
+  constructor( public hospitalService:HospitalServiceService,
     private modalImagenService: ModalImagenService,
-    private busquedaService:BusquedasService
-    ) { }
+    private busquedaService:BusquedasService,
+    private router:Router
+    ) {
+
+
+    }
 
   ngOnDestroy(){
       this.imgSubs.unsubscribe()
@@ -49,7 +55,7 @@ export class HospitalesComponent implements OnInit,OnDestroy {
       this.cargando = false;
 
       this.hospitales = resp;//almacenamos en el nuestro array la respuesta que viene del backend
-
+      //console.log(this.hospitales.nombre);
     })
   }
 
@@ -131,4 +137,15 @@ async abrirSwetAlert(){
 
 
   }
+
+  citaPacientes( hospital:Hospital){
+
+    this.router.navigateByUrl(`dashboard/citasHospital/${hospital._id}`);
+
+  }
+
+
+
+
+
 }

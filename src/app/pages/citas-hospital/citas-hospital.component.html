@@ -1,0 +1,32 @@
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <button class="btn btn-outline-danger " routerLink="../../hospitales">Volver</button>
+
+</div>
+<h2 class="text-info ">{{ hospital }}</h2>
+<hr>
+<table class="table table-striped animated zoomIn fast ">
+    <thead>
+        <tr>
+            <th class="w-15 text-center">Foto</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Especialidad</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Hora</th>
+
+
+        </tr>
+    </thead>
+    <tbody *ngFor="let item of citas">
+        <tr *ngIf="item.hospital._id === id">
+            <td class="text-center">
+                <img [src]=" item.usuario.img | imagen: 'usuarios'" class="avatar cursor">
+            </td>
+            <th scope="row">
+                {{ item.usuario.nombre }}</th>
+            <td>{{ item.especialidad }}</td>
+            <td>{{ item.fecha }}</td>
+            <td>{{ item.hora }}</td>
+        </tr>
+
+    </tbody>
+</table>

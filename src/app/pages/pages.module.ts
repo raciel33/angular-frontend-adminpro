@@ -41,6 +41,7 @@ import { InicioComponent } from './inicio/inicio.component';
 import { VerHospitalesUserComponent } from './ver-hospitales-user/ver-hospitales-user.component';
 import { AgendaActividadesComponent } from './agenda-actividades/agenda-actividades.component';
 import { DonarSangreComponent } from './donar-sangre/donar-sangre.component';
+import { CitasHospitalComponent } from './citas-hospital/citas-hospital.component';
 
 
 const materialModules = [
@@ -77,7 +78,8 @@ const materialModules = [
     RxjsComponent,
     VerHospitalesUserComponent,
     AgendaActividadesComponent,
-    DonarSangreComponent
+    DonarSangreComponent,
+    CitasHospitalComponent
 
   ],
   imports: [
@@ -99,6 +101,7 @@ const materialModules = [
     DashboardComponent,
     AccountSettingComponent,
     ProgressComponent,
+    CitasHospitalComponent,
     RxjsComponent,materialModules,BrowserAnimationsModule
   ]
 })

@@ -6,6 +6,7 @@ import { DonaComponent } from './dona/dona.component';
 import { ChartsModule } from 'ng2-charts';
 import { ModalImagenComponent } from './modal-imagen/modal-imagen.component';
 import { BarChartsComponent } from './bar-charts/bar-charts.component';
+import { ModalInformeComponent } from './modal-informe/modal-informe.component';
 
 
 
@@ -16,6 +17,8 @@ import { BarChartsComponent } from './bar-charts/bar-charts.component';
     DonaComponent,
     ModalImagenComponent,
     BarChartsComponent,
+    ModalInformeComponent,
+
 
   ],
   imports: [
@@ -26,7 +29,9 @@ import { BarChartsComponent } from './bar-charts/bar-charts.component';
   exports:[
     IncrementadorComponent,
     DonaComponent,
-    ModalImagenComponent,BarChartsComponent
+    ModalImagenComponent,
+    BarChartsComponent,
+    ModalInformeComponent
   ]
 })
 export class ComponentsModule { }

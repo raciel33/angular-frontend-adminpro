@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-progress',
@@ -26,5 +27,13 @@ get getProgreso3(){
   return `${ this.progreso3}%`
 }
 
-
+valorar(){
+  Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Gracias por tu valoración',
+    showConfirmButton: false,
+    timer: 1500
+  })
+}
 }
